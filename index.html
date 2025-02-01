@@ -5,26 +5,251 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intelligent Video Cut Detection</title>
     <style>
-        .controls { margin-top: 10px; }
-        .threshold-control { margin-top: 10px; }
         canvas { display: none; }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --background-color: #f8fafc;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+        }
+
+        /* Base styles */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .header h1 a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 24px;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            background: black;
+            aspect-ratio: 16/9;
+        }
+
+        .controls {
+            margin-top: 20px;
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        .file-inputs {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .file-input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .custom-file-upload:hover {
+            background-color: var(--secondary-color);
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .threshold-control {
+            margin-top: 20px;
+        }
+
+        .threshold-control label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            -webkit-appearance: none;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .credits {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            backdrop-filter: blur(4px);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .credits a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .credits a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 16px;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
+            button, .custom-file-upload {
+                width: 100%;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+
+            .credits {
+                font-size: 0.8rem;
+                padding: 8px;
+            }
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <h1><a href="https://github.com/geoff604/video-cut-detection">video-cut-detection</a> example page</h1>
-    <p>JavaScript video player that plays a ding sound on every cut</p>
-
+    <div class="header">
+        <h1><a href="https://github.com/geoff604/video-cut-detection">video-cut-detection</a> example page</h1>
+        <p>JavaScript video player that plays a ding sound on every cut</p>
+    </div>
     <div class="container">
         <video id="videoElement" controls></video>
         <div class="controls">
-            Select video: <input type="file" id="videoInput" accept="video/*">
-            Select ding sound: <input type="file" id="audioInput" accept="audio/*">
+            <div class="file-inputs">
+                <div class="file-input">
+                    <label class="custom-file-upload" for="videoInput">
+                        Select Video
+                    </label>
+                    <input type="file" id="videoInput" accept="video/*">
+                </div>
+                
+                <div class="file-input">
+                    <label class="custom-file-upload" for="audioInput">
+                        Custom Ding Sound
+                    </label>
+                    <input type="file" id="audioInput" accept="audio/*">
+                </div>
+            </div>
             <div class="threshold-control">
-                Sensitivity: <input type="range" id="threshold" min="1" max="50" value="40">
-                <span id="thresholdValue">40</span>
+                <label for="threshold">Sensitivity: <span id="thresholdValue">40</span></label>
+                <input type="range" id="threshold" min="1" max="50" value="40">               
             </div>
         </div>
+    </div>
+    <div class="credits">
+        Designed by <a href="https://github.com/geoff604" target="_blank">Geoff Peters</a>
     </div>
 
     <canvas id="processingCanvas"></canvas>
