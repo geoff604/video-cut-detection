@@ -107,6 +107,8 @@
         }
 
         // Main Application Code
+        const DEFAULT_DING_SOUND = 'sounds/sound-1.mp3';
+
         const videoElement = document.getElementById('videoElement');
         const thresholdInput = document.getElementById('threshold');
         const thresholdValue = document.getElementById('thresholdValue');
@@ -124,13 +126,27 @@
             return audioContext;
         }
 
-        async function loadDingSound(file) {
+        async function loadDingSound(file = null) {
             try {
                 const context = await initAudioContext();
-                const arrayBuffer = await file.arrayBuffer();
+                let arrayBuffer;
+                
+                if (file) {
+                    // Use user-provided file
+                    arrayBuffer = await file.arrayBuffer();
+                } else {
+                    // Fetch default sound from server
+                    const response = await fetch(DEFAULT_DING_SOUND);
+                    if (!response.ok) {
+                        throw new Error('Failed to load default sound');
+                    }
+                    arrayBuffer = await response.arrayBuffer();
+                }
+                
                 audioBuffer = await context.decodeAudioData(arrayBuffer);
             } catch (error) {
                 console.error('Error loading sound:', error);
+                alert('Failed to load sound. Please try another file.');
             }
         }
 
@@ -157,8 +173,17 @@
             cutDetector.processFrame();
         }
 
+        function loadDingSoundIfNeeded() {
+            const hasDingFileSelected = !!(document.getElementById('audioInput').files[0]);
+            if (!hasDingFileSelected) {
+                loadDingSound();
+            }
+        }
+
         // Event Listeners
         document.getElementById('videoInput').addEventListener('change', function(e) {
+            loadDingSoundIfNeeded();
+
             const file = e.target.files[0];
             if (file) {
                 videoElement.src = URL.createObjectURL(file);
@@ -168,7 +193,7 @@
 
         document.getElementById('audioInput').addEventListener('change', function(e) {
             const file = e.target.files[0];
-            if (file) loadDingSound(file);
+            loadDingSound(file);
         });
 
         videoElement.onplay = async (event) => {
