@@ -6,7 +6,7 @@ Instructions:
 Visit example page at: https://geoff604.github.io/video-cut-detection/
 
 Select your video.
-Select your ding sound.
+Select your ding sound (optional).
 
 Then start playing the video, and you'll hear the ding sound you selected when a cut is detected in the video.
 
@@ -15,10 +15,6 @@ You can try adjusting the sensitivity slider if the dings are happening too ofte
 Don't have a video to try?
 You can try this one (download it to your computer first):
 https://geoff604.github.io/video-cut-detection/videos/Awesome%20Food%20at%20Lonsdale%20Quay%20Market%20in%20North%20Vancouver%20BC%20Canada%20-%20geoffmobile.mp4
-
-Don't have a ding sound to use?
-Try this one (download it to your computer first):
-https://geoff604.github.io/video-cut-detection/sounds/sound-1.mp3
 
 More example ding sounds can be found at:
 https://github.com/geoff604/video-cut-detection/tree/main/sounds
