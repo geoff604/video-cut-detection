@@ -112,6 +112,23 @@
             background-color: var(--secondary-color);
         }
 
+        .secondary-button {
+            flex: 1;
+            padding: 8px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            margin-top: 8px;
+        }
+
+        .secondary-button:hover {
+            background-color: var(--border-color);
+        }
+
         button {
             flex: 1;
             padding: 12px;
@@ -128,8 +145,13 @@
             background-color: var(--secondary-color);
         }
 
+        .advanced-controls {
+            margin-left: 30px;
+        }
+
         .threshold-control {
-            margin-top: 20px;
+            margin-top: 10px;
+            margin-bottom: 20px;
         }
 
         .threshold-control label {
@@ -199,10 +221,6 @@
                 grid-template-columns: 1fr;
             }
 
-            button, .custom-file-upload {
-                width: 100%;
-            }
-
             .header h1 {
                 font-size: 1.5rem;
             }
@@ -214,6 +232,10 @@
             .credits {
                 font-size: 0.8rem;
                 padding: 8px;
+            }
+
+            .advanced-controls {
+                margin-left: 0px;
             }
         }
     </style>
@@ -234,17 +256,18 @@
                     </label>
                     <input type="file" id="videoInput" accept="video/*">
                 </div>
-                
+            </div>
+            <div class="advanced-controls">
+                <div class="threshold-control">
+                    <label for="threshold">Sensitivity: <span id="thresholdValue">40</span></label>
+                    <input type="range" id="threshold" min="1" max="50" value="40">               
+                </div>
                 <div class="file-input">
-                    <label class="custom-file-upload" for="audioInput">
-                        Custom Ding Sound
+                    <label class="secondary-button" for="audioInput">
+                        Upload Ding Sound (optional)
                     </label>
                     <input type="file" id="audioInput" accept="audio/*">
                 </div>
-            </div>
-            <div class="threshold-control">
-                <label for="threshold">Sensitivity: <span id="thresholdValue">40</span></label>
-                <input type="range" id="threshold" min="1" max="50" value="40">               
             </div>
         </div>
     </div>
