@@ -35,6 +35,15 @@ your computer first](https://geoff604.github.io/video-cut-detection/videos/Aweso
 Some more example ding sounds can be found at:
 https://github.com/geoff604/video-cut-detection/tree/main/sounds
 
+## How does the cut detection algorithm work?
+The CutDetector class implements a video cut detection algorithm using frame differencing and adaptive thresholding.
+The algorithm analyzes pixel data from the currently displayed frames as they progress, to detect significant changes between frames.
+To improve performance, downscaling and converting to grayscale is done prior to comparing frames in order to
+determine if the difference is over the threshold.
+Changing the sensitivity slider affects the threshold calculation to make the detection more or less sensitive.
+Finally, the class CutDetector fires an event when a cut is detected, and a ding sound is played when the
+event is received.
+
 ## Who wrote this tool?
 [video-cut-detection](https://github.com/geoff604/video-cut-detection/) was written by [Geoff Peters](https://github.com/geoff604/) a software developer based in Vancouver BC Canada.
 Initial release was on January 31st 2025.
