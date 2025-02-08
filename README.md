@@ -19,18 +19,17 @@ By playing a ding as soon as every cut is detected, this tool allows for insight
 into the rhythm, timing, and style of how the video was edited.
 
 ## Instructions and how to use
-To get started, you can visit the example page below:
-https://geoff604.github.io/video-cut-detection/
+1. To get started, [click here to load up the video player](https://geoff604.github.io/video-cut-detection/).
+2. Select your video.
+3. Then start playing the video, and you'll hear a ding sound when a cut is detected in the video.
 
-Select your video.
-Then start playing the video, and you'll hear a ding sound when a cut is detected in the video.
-
-You can try adjusting the sensitivity slider if the dings are happening too often or not enough.
-You can upload a custom ding sound if you want a different "ding" than the default.
+- You can try adjusting the sensitivity slider if the dings are happening too often or not enough.
+- You can upload a custom ding sound if you want a different "ding" than the default.
 
 ## Don't have a video to try?
-You can try [this video](https://geoff604.github.io/video-cut-detection/videos/Awesome%20Food%20at%20Lonsdale%20Quay%20Market%20in%20North%20Vancouver%20BC%20Canada%20-%20geoffmobile.mp4) I made, which makes use of a lot of straight cuts ([download it to
-your computer first](https://geoff604.github.io/video-cut-detection/videos/Awesome%20Food%20at%20Lonsdale%20Quay%20Market%20in%20North%20Vancouver%20BC%20Canada%20-%20geoffmobile.mp4), and then you can select it in the [app](https://geoff604.github.io/video-cut-detection/).
+- You can try [this video](https://geoff604.github.io/video-cut-detection/videos/Awesome%20Food%20at%20Lonsdale%20Quay%20Market%20in%20North%20Vancouver%20BC%20Canada%20-%20geoffmobile.mp4) I made, which makes use of a lot of straight cuts.
+- [Download it to
+your computer first](https://geoff604.github.io/video-cut-detection/videos/Awesome%20Food%20at%20Lonsdale%20Quay%20Market%20in%20North%20Vancouver%20BC%20Canada%20-%20geoffmobile.mp4), and then you can select it in the [web app](https://geoff604.github.io/video-cut-detection/).
 
 ## Want a different "ding" sound?
 Some more example ding sounds can be found at:
