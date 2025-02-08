@@ -1,30 +1,43 @@
 # video-cut-detection
 JavaScript video player that plays a ding sound on every cut
 
-## Instructions
+## What is a "cut" in video editing?
+A "cut" is one of the most fundamental techniques in video editing.
+It's essentially a transition from one clip to another, and it’s the simplest
+and most straightforward way to move between scenes.
 
-Visit example page at: https://geoff604.github.io/video-cut-detection/
+The most common kind of cut is a "straight cut", where one shot instantly changes
+to another. No fancy effects—just a simple, clean transition.
+
+## Why play a ding when we detect a cut?
+Often when we watch videos, we are not aware that the video has a cut.
+We are so used to the "language" of video editing, which in some styles has a lot
+of fast cuts. Some TV commercials, documentaries, or other videos, make use of
+many straight cuts.
+
+By playing a ding as soon as every cut is detected, this tool allows for insight
+into the rhythm, timing, and style of how the video was edited.
+
+## Instructions and how to use
+To get started, you can visit the example page below:
+https://geoff604.github.io/video-cut-detection/
 
 Select your video.
-Select your ding sound (optional).
-
-Then start playing the video, and you'll hear the ding sound you selected when a cut is detected in the video.
+Then start playing the video, and you'll hear a ding sound when a cut is detected in the video.
 
 You can try adjusting the sensitivity slider if the dings are happening too often or not enough.
+You can upload a custom ding sound if you want a different "ding" than the default.
 
 ## Don't have a video to try?
-You can try this one (download it to your computer first):
-https://geoff604.github.io/video-cut-detection/videos/Awesome%20Food%20at%20Lonsdale%20Quay%20Market%20in%20North%20Vancouver%20BC%20Canada%20-%20geoffmobile.mp4
+You can try [this video](https://geoff604.github.io/video-cut-detection/videos/Awesome%20Food%20at%20Lonsdale%20Quay%20Market%20in%20North%20Vancouver%20BC%20Canada%20-%20geoffmobile.mp4) I made, which makes use of a lot of straight cuts ([download it to
+your computer first](https://geoff604.github.io/video-cut-detection/videos/Awesome%20Food%20at%20Lonsdale%20Quay%20Market%20in%20North%20Vancouver%20BC%20Canada%20-%20geoffmobile.mp4), and then you can select it in the [app](https://geoff604.github.io/video-cut-detection/).
 
-More example ding sounds can be found at:
+## Want a different "ding" sound?
+Some more example ding sounds can be found at:
 https://github.com/geoff604/video-cut-detection/tree/main/sounds
 
-## Why is this idea helpful?
-Often when we watch videos, we are not aware that the video has a abrupt cut.
-This tool allows for insight into how the video was edited.
-
 ## Who wrote this tool?
-Originally written by Geoff Peters at https://github.com/geoff604/video-cut-detection
+[video-cut-detection](https://github.com/geoff604/video-cut-detection/) was written by [Geoff Peters](https://github.com/geoff604/) a software developer based in Vancouver BC Canada.
 Initial release was on January 31st 2025.
 Feel free to contact Geoff on X at https://x.com/gpeters or email him at geoff@gpeters.com
 
