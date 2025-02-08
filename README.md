@@ -27,7 +27,7 @@ into the rhythm, timing, and style of how the video was edited.
 - You can upload a custom ding sound if you want a different "ding" than the default.
 
 ## Don't have a video to try?
-- You can try [this video](https://geoff604.github.io/video-cut-detection/videos/Awesome%20Food%20at%20Lonsdale%20Quay%20Market%20in%20North%20Vancouver%20BC%20Canada%20-%20geoffmobile.mp4) I made, which makes use of a lot of straight cuts.
+You can try [this video](https://geoff604.github.io/video-cut-detection/videos/Awesome%20Food%20at%20Lonsdale%20Quay%20Market%20in%20North%20Vancouver%20BC%20Canada%20-%20geoffmobile.mp4) I made, which makes use of a lot of straight cuts.
 - [Download it to
 your computer first](https://geoff604.github.io/video-cut-detection/videos/Awesome%20Food%20at%20Lonsdale%20Quay%20Market%20in%20North%20Vancouver%20BC%20Canada%20-%20geoffmobile.mp4), and then you can select it in the [web app](https://geoff604.github.io/video-cut-detection/).
 
