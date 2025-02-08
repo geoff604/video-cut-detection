@@ -40,7 +40,7 @@ The CutDetector class implements a video cut detection algorithm using frame dif
 
 The algorithm analyzes pixel data from the currently displayed frames as they progress, to detect significant changes between frames.
 
-To improve performance, downscaling and converting to grayscale is done prior to comparing frames in order to
+To improve performance, downsampling and converting to grayscale are done prior to comparing frames in order to
 determine if the difference is over the threshold.
 
 Changing the sensitivity slider affects the threshold calculation to make the detection more or less sensitive.
