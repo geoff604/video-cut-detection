@@ -259,8 +259,8 @@
             </div>
             <div class="advanced-controls">
                 <div class="threshold-control">
-                    <label for="threshold">Sensitivity: <span id="thresholdValue">40</span></label>
-                    <input type="range" id="threshold" min="1" max="50" value="40">               
+                    <label for="threshold">Sensitivity: <span id="thresholdValue">11</span></label>
+                    <input type="range" id="threshold" min="1" max="50" value="11">
                 </div>
                 <div class="file-input">
                     <label class="secondary-button" for="audioInput">
@@ -411,7 +411,7 @@
             if (cutDetector) return;
             
             cutDetector = new CutDetector(videoElement, {
-                threshold: parseInt(thresholdInput.value),
+                threshold: 51 - parseInt(thresholdInput.value),
                 cooldown: 500
             });
             cutDetector.init();
@@ -460,7 +460,7 @@
 
         thresholdInput.addEventListener('input', (e) => {
             thresholdValue.textContent = e.target.value;
-            if (cutDetector) cutDetector.threshold = parseInt(e.target.value);
+            if (cutDetector) cutDetector.threshold = 51 - parseInt(e.target.value);
         });
     </script>
 </body>
